@@ -1,0 +1,339 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --font1: "Roboto", sans-serif;
+  --backgroundColor1: #050505;
+
+  --letterSpacing1: 0.7px;
+  --letterSpacing2: 1.2px;
+
+  --size1: 300px;
+  --size2: 200px;
+
+  --textColor1: rgb(170, 170, 170);
+  --textColor2: rgb(108, 188, 188);
+
+  --controlColor1: rgba(255, 255, 255, 0.5);
+  --controlColor2: rgba(255, 255, 255, 0.7);
+
+  --copyColor1: #333333;
+  --copyColor2: #404040;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--backgroundColor1);
+  font-family: var(--font1);
+}
+
+.container {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  place-content: center;
+  padding: 0 20px;
+}
+
+.cubeContainer {
+  perspective: 1600px;
+}
+
+.controlContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: left;
+  font-size: 32px;
+  color: var(--textColor1);
+  letter-spacing: var(--letterSpacing2);
+  margin: 30px 0 20px 0;
+}
+
+.sliderContainer {
+  width: 180px;
+  color: var(--textColor1);
+  margin: 10px 0 0 0;
+}
+
+.directionText,
+.speedText {
+  color: var(--textColor1);
+  font-size: 16px;
+  letter-spacing: var(--letterSpacing2);
+  margin-top: 10px;
+}
+
+.speedText {
+  margin-bottom: 2px;
+}
+
+.slider1 {
+  -webkit-appearance: none;
+  width: 160px;
+  height: 20px;
+  background-color: var(--controlColor1);
+  outline: none;
+  padding: 0 10px;
+  box-sizing: content-box;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.sliderSelect {
+  display: flex;
+  justify-content: space-between;
+  color: var(--textColor2);
+  font-size: 14px;
+  letter-spacing: var(--letterSpacing2);
+  margin: 3px 0 0 0;
+}
+
+.slider1:hover {
+  background-color: var(--controlColor2);
+  transition: 0.4s ease-in-out;
+}
+
+/* chrome */
+.slider1::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 8px;
+  height: 8px;
+  background-color: var(--backgroundColor1);
+  cursor: pointer;
+}
+
+/* firefox */
+.slider1::-moz-range-thumb {
+  -webkit-appearance: none;
+  width: 8px;
+  height: 8px;
+  border: none;
+  border-radius: 0;
+  background-color: var(--backgroundColor1);
+  cursor: pointer;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.toggleInput {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 200px;
+}
+
+#status {
+  font-family: var(--font1);
+  font-size: 14px;
+  color: var(--textColor2);
+  letter-spacing: var(--letterSpacing2);
+  text-align: left;
+  padding-left: 6px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+}
+
+.slider2 {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--controlColor1);
+  -webkit-transition: 0.4s;
+  transition: 0.4s ease-in-out;
+}
+
+.slider2:before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  left: 8px;
+  bottom: 6px;
+  background-color: var(--backgroundColor1);
+  -webkit-transition: 0.4s;
+  transition: 0.4s ease-in-out;
+}
+
+input:checked + .slider2 {
+  background-color: var(--controlColor1);
+}
+
+input:focus + .slider2 {
+  transition: 0.4s ease-in-out;
+}
+
+input:checked + .slider2:before {
+  -webkit-transform: translateX(14px);
+  -ms-transform: translateX(14px);
+  transform: translateX(14px);
+}
+
+input:checked + .slider2:hover {
+  background-color: var(--controlColor2);
+  transition: 0.4s ease-in-out;
+}
+
+.slider2:hover {
+  background-color: var(--controlColor2);
+  transition: 0.4s ease-in-out;
+}
+
+#cube {
+  position: relative;
+  width: var(--size1);
+  height: var(--size1);
+  margin: 200px 0 70px 0;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg);
+  animation: animate1 4s linear infinite;
+}
+
+/* CLOCKWISE */
+@keyframes animate1 {
+  0% {
+    transform: rotateX(-30deg) rotateY(0deg);
+  }
+
+  100% {
+    transform: rotateX(-30deg) rotateY(360deg);
+  }
+}
+
+/* ANTI-CLOCKWISE */
+@keyframes animate2 {
+  0% {
+    transform: rotateX(-30deg) rotateY(360deg);
+  }
+
+  100% {
+    transform: rotateX(-30deg) rotateY(0deg);
+  }
+}
+
+#cube div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+#cube div span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgb(21, 21, 21), rgb(84, 211, 205));
+  transform: rotateY(calc(90deg * var(--i))) translateZ(150px);
+}
+
+#top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--size1);
+  height: var(--size1);
+  background: rgb(22, 137, 137);
+  transform: rotateX(90deg) translateZ(150px);
+}
+
+#top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--size1);
+  height: var(--size1);
+  transform: translateZ(-380px);
+  filter: blur(4px);
+  box-shadow:
+    0 0 75px rgba(0, 255, 255, 0.2),
+    0 0 125px rgba(0, 255, 255, 0.3);
+}
+
+.copy {
+  background-color: var(--backgroundColor1);
+  color: var(--copyColor2);
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: var(--letterSpacing1);
+  padding: 20px 0;
+  margin-top: 50px;
+}
+
+.copy a {
+  color: var(--copyColor2);
+  text-decoration: underline dotted;
+  text-decoration-color: var(--copyColor1);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 6px;
+}
+
+.copy a:hover {
+  color: var(--copyColor2);
+  text-decoration-color: var(--copyColor2);
+}
+
+@media only screen and (max-width: 565px) {
+  h1 {
+    font-size: 22px;
+  }
+
+  #cube {
+    width: var(--size2);
+    height: var(--size2);
+    margin-top: 90px;
+    margin-left: 36px;
+  }
+
+  #cube div span {
+    transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
+  }
+
+  #top {
+    transform: rotateX(90deg) translateZ(100px);
+  }
+
+  #top::before {
+    width: var(--size2);
+    height: var(--size2);
+    transform: translateZ(-240px);
+  }
+}
+
+@media only screen and (max-width: 398px) {
+  .controlContainer {
+    width: 260px;
+  }
+
+  .copy {
+    padding: 6px 0;
+    line-height: 1.6;
+  }
+
+  .copy2 {
+    display: block;
+  }
+}

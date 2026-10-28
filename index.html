@@ -1,0 +1,75 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon-1.png"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <title>3D rotating cube</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>3D rotating cube</h1>
+      </header>
+
+      <main>
+        <div class="controlContainer">
+          <div class="sliderContainer">
+            <div class="speedText">speed</div>
+            <input
+              type="range"
+              min="0.6"
+              max="12"
+              step="0.2"
+              value="8"
+              class="slider1"
+              id="refreshRate"
+            />
+            <div class="sliderSelect">
+              <div>faster</div>
+              <div>slower</div>
+            </div>
+          </div>
+
+          <label for="toggleInput" class="directionText">direction</label>
+          <div class="toggleInput">
+            <label for="toggleswitch" class="switch">
+              <input type="checkbox" id="toggleswitch" />
+              <span class="slider2"></span>
+            </label>
+            <div id="status"></div>
+          </div>
+        </div>
+        <div class="cubeContainer">
+          <div id="cube" class="cube">
+            <div id="top"></div>
+            <div>
+              <span style="--i: 0" ;></span>
+              <span style="--i: 1" ;></span>
+              <span style="--i: 2" ;></span>
+              <span style="--i: 3" ;></span>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- copyright info -->
+      <footer>
+        <div id="copy" class="copy"></div>
+      </footer>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+
+<!-- Resources -->
+<!-- Learn 3D Cube Animation Effects with HTML and CSS | Web Development Tutorial -->
+<!-- https://www.youtube.com/watch?v=faeF_FJPH0E&t=9s -->
+<!-- https://css-tricks.com/how-css-perspective-works/ -->
